@@ -10,12 +10,12 @@ reverse (Pivot c ( l, r )) =
 
 mirror : (Pivot a -> Pivot b) -> Pivot a -> Pivot b
 mirror f =
-    reverse >> f >> reverse
+    reverse >> reverse >> f
 
 
 mirrorM : (Pivot a -> Maybe (Pivot b)) -> Pivot a -> Maybe (Pivot b)
 mirrorM f =
-    reverse >> f >> Maybe.map reverse
+    reverse >> Maybe.map reverse >> f
 
 
 assertList : List (Maybe a) -> Maybe (List a)
@@ -31,7 +31,7 @@ assertList =
                 _ ->
                     Nothing
     in
-        Just [] |> List.foldr maybeAppend
+    Just [] |> List.foldr maybeAppend
 
 
 assert : Pivot (Maybe a) -> Maybe (Pivot a)
@@ -51,10 +51,14 @@ withRollback f x =
 
 
 (!>) =
-    flip withRollback
+    \b a -> withRollback a b
+
+
 infixl 0 !>
 
 
 (<!) =
     withRollback
+
+
 infixr 0 <!

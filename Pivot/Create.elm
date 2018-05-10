@@ -1,8 +1,8 @@
 module Pivot.Create exposing (..)
 
+import Pivot.Get exposing (..)
 import Pivot.Types exposing (..)
 import Pivot.Utilities exposing (..)
-import Pivot.Get exposing (..)
 
 
 fromList : List a -> Maybe (Pivot a)
@@ -23,9 +23,11 @@ fromCons x xs =
 
 (!!) =
     fromCons
+
+
 infixr 5 !!
 
 
 singleton : a -> Pivot a
 singleton =
-    flip fromCons []
+    \a -> fromCons a []

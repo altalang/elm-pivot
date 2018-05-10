@@ -1,9 +1,9 @@
 module Pivot.Modify exposing (..)
 
-import Pivot.Types exposing (..)
-import Pivot.Utilities exposing (..)
 import Pivot.Create exposing (..)
 import Pivot.Get exposing (..)
+import Pivot.Types exposing (..)
+import Pivot.Utilities exposing (..)
 
 
 setC : a -> Pivot a -> Pivot a
@@ -89,8 +89,8 @@ sortWith compare (Pivot c ( l, r )) =
                 _ ->
                     ( l_ ++ [ item ], r_ )
     in
-        l
-            ++ r
-            |> List.sortWith compare
-            |> List.foldr folder ( [], [] )
-            |> Pivot c
+    l
+        ++ r
+        |> List.sortWith compare
+        |> List.foldr folder ( [], [] )
+        |> Pivot c

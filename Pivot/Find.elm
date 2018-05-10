@@ -1,9 +1,9 @@
 module Pivot.Find exposing (..)
 
-import Pivot.Types exposing (..)
-import Pivot.Utilities exposing (..)
 import Pivot.Get exposing (..)
 import Pivot.Position exposing (..)
+import Pivot.Types exposing (..)
+import Pivot.Utilities exposing (..)
 
 
 firstWith : (a -> Bool) -> Pivot a -> Maybe (Pivot a)
@@ -21,6 +21,7 @@ findCR : (a -> Bool) -> Pivot a -> Maybe (Pivot a)
 findCR pred pvt =
     if pvt |> getC |> pred then
         Just pvt
+
     else
         goR pvt |> Maybe.andThen (findCR pred)
 
