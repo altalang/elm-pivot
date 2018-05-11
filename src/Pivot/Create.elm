@@ -21,13 +21,6 @@ fromCons x xs =
     Pivot x ( [], xs )
 
 
-(!!) =
-    fromCons
-
-
-infixr 5 !!
-
-
 singleton : a -> Pivot a
 singleton =
     \a -> fromCons a []
