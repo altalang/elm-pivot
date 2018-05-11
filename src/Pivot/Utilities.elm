@@ -48,17 +48,3 @@ withRollback : (a -> Maybe a) -> a -> a
 withRollback f x =
     f x
         |> Maybe.withDefault x
-
-
-(!>) =
-    \b a -> withRollback a b
-
-
-infixl 0 !>
-
-
-(<!) =
-    withRollback
-
-
-infixr 0 <!
