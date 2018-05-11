@@ -16,7 +16,7 @@ getL (Pivot _ ( l, _ )) =
 
 hasL : Pivot a -> Bool
 hasL =
-    getL >> (\a -> (>) a 0) >> List.length
+    getL >> List.length >> (\a -> (>) a 0)
 
 
 getR : Pivot a -> List a

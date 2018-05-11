@@ -10,12 +10,12 @@ reverse (Pivot c ( l, r )) =
 
 mirror : (Pivot a -> Pivot b) -> Pivot a -> Pivot b
 mirror f =
-    reverse >> reverse >> f
+    reverse >> f >> reverse
 
 
 mirrorM : (Pivot a -> Maybe (Pivot b)) -> Pivot a -> Maybe (Pivot b)
 mirrorM f =
-    reverse >> Maybe.map reverse >> f
+    reverse >> f >> Maybe.map reverse
 
 
 assertList : List (Maybe a) -> Maybe (List a)
